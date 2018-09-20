@@ -1,0 +1,16 @@
+生成blog步骤：
+1. hexo new "blog_name"
+2. hexo g
+3. hexo d
+
+
+npm 不能用报以下错误：
+/usr/local/lib/node_modules/npm/bin/npm-cli.js:79
+let notifier = require('update-notifier')({pkg})
+^^^
+解决办法：
+# apt-get remove nodejs   //删除nodejs  
+# curl -sL https://deb.nodesource.com/setup_8.x | sudo bash - //nodejs源  
+# apt-get update //更新包  
+# apt-get install nodejs //安装nodejs  
+# npm install npm -g //更新npm
