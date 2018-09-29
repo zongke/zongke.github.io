@@ -1184,7 +1184,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/2018/09/20/libvirt错误汇总/" itemprop="url">
-                  Kolla部署Openstack
+                  openstack libvirt错误汇总
                 </a>
               
             
@@ -1227,7 +1227,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-29 07:58:22" itemprop="dateModified" datetime="2018-09-29T07:58:22+00:00">2018-09-29</time>
+                <time title="修改时间：2018-09-29 08:01:06" itemprop="dateModified" datetime="2018-09-29T08:01:06+00:00">2018-09-29</time>
               
             
           </span>
@@ -1290,15 +1290,20 @@
             <ol>
 <li><p>问题现象: nova libvirt容器启动失败，报错：libvirt-admin.so.0: cannot open shared object file: Permission denied</p>
 <p>解决方案: <a href="https://docs.openstack.org/project-deploy-guide/kolla-ansible/pike/quickstart.html" target="_blank" rel="noopener">https://docs.openstack.org/project-deploy-guide/kolla-ansible/pike/quickstart.html</a></p>
-<pre><code>在服务器上执行：apparmor_parser -R /etc/apparmor.d/usr.sbin.libvirtd # 禁用libvirt profile
+<pre><code>在服务器上执行：$ apparmor_parser -R /etc/apparmor.d/usr.sbin.libvirtd # 禁用libvirt profile
 </code></pre></li>
 </ol>
 <ol start="2">
 <li><p>问题现象: 创建虚机的时候，nova compute连接libvirt失败：libvirtError: internal error: process exited while connecting to monitor: Could not access KVM kernel module: Permission denied</p>
 <p>快速解决方案: <a href="https://ask.openstack.org/en/question/56257/failed-to-intialize-kvm-hypervisor-permission-denied/" target="_blank" rel="noopener">https://ask.openstack.org/en/question/56257/failed-to-intialize-kvm-hypervisor-permission-denied/</a></p>
 <p>修改/etc/kolla/nova-libvirt/qemu.conf  user=root group=root<br>重启libvirt容器</p>
-<p>以上是临时解决方案，真正原因是/dev/kvm权限问题引起的<br>服务器上执行：<br>  $getfacl /dev/kvm<br>   user::rw-<br>   user:ubuntu:rw-<br>   group::—<br>   mask::rw-<br>   other::–</p>
-<p>其中group没有执行权限，导致一直报permission denied错误<br>真正解决办法：<br>  $ setfacl -b /dev/kvm             # 清楚acl权限<br>  $ setfacl -m group::rw- /dev/kvm  # 给group增加权限<br>  $ 修改/etc/kolla/nova-libvirt/qemu.conf  user=nova group=nova  # 如果被改成root，则改回nova<br>  $ docker restart nova_libvirt     # 重启libvirt容器</p>
+<p>以上是临时解决方案，真正原因是/dev/kvm权限问题引起的<br>服务器上执行：<br>  $ getfacl /dev/kvm</p>
+<pre><code>user::rw-
+user:ubuntu:rw-
+group::---
+mask::rw-
+other::--
+</code></pre><p>其中group没有执行权限，导致一直报permission denied错误<br>真正解决办法：<br>  $ setfacl -b /dev/kvm             # 清楚acl权限<br>  $ setfacl -m group::rw- /dev/kvm  # 给group增加权限<br>  $ 修改/etc/kolla/nova-libvirt/qemu.conf  user=nova group=nova  # 如果被改成root，则改回nova<br>  $ docker restart nova_libvirt     # 重启libvirt容器</p>
 </li>
 </ol>
 
@@ -1440,9 +1445,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
