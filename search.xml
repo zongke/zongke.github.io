@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[openstack集群热升级方案]]></title>
+    <url>%2F2018%2F11%2F29%2Fopenstack%E9%9B%86%E7%BE%A4%E7%83%AD%E5%8D%87%E7%BA%A7%E6%96%B9%E6%A1%88%2F</url>
+    <content type="text"><![CDATA[注：本升级方案仅适用于Docker部署的openstack环境方案背景 由于openstack迭代很快，每个版本会修复很多Bug，引入很多特性，有一些问题修复和特性引入是我们所需要的功能，想增加到环境中；我们本身也修复了一些问题，增加了一些特性，想升级到生产环境中去。通过环境热升级，我们可以将特性或者修复的Bug合入到我们的版本中去，且不影响当前环境使用。所以版本热升级则不可避免。方案概述 我们采用容器镜像替换的方式升级云环境。首先制作新镜像，将新代码打包到新镜像中其次在各节点上更新镜像，使用kolla upgrade命令，升级配置，升级数据库，使用新镜像重启容器，完成组件升级。最大限度保证业务不中断，升级失败可快速回退至原镜像。升级目标 热升级，业务无影响 升级失败可回退，业务无影响前期准备制作新版本镜像将新特性，或者修复的bug更新到公司代码库，使用kolla项目制作各组件镜像：kolla-build –config-file /home/zongk/kolla/etc/kolla/kolla-build.conf -t source -b ubuntu neutron备份配置文件 *将各节点配置文件保存，很重要，如果升级失败，需要回退版本时，可直接使用。备份数据库 *将数据库备份，很重要，如果升级失败，需要回退版本时，可直接使用。（最新版本自动化部署已经将数据库备份集成，每天凌晨2点会自动全量备份数据库，如果认为该备份已是最新数据库备份，可不备份数据库，但建议每次升级都重新备份下数据库）升级步骤下载镜像将新版本镜像下载至个节点上，例如：升级Nova组件，在各节点上拉取Nova组件最新镜像：git pull images.neunn.com/ncloud/nova-xxx:3.0.0更新配置在新特性或者bug需要修改的配置执行升级在部署节点上执行:kolla-ansible upgrade -i /kolla-ansible/deploy-ui/conf/multinodes –t nova升级验证查看各节点nova服务log，看是否运行正常创建虚机测试（后续增加tempest服务后，可用tempest测试） 注：P版本之后的kolla-ansible，可以通过增–host 参数支持单节点升级扩容节点（已增加到新版部署平台）扩容不支持扩容控制节点，只支持扩容计算存储网络节点命令行扩容修改配置文件在部署虚机中修改节点配置文件，增加待扩容节点信息/kolla-ansible/deploy-ui/AutoDeploy/scripts/conf/multimode例如要扩容计算节点，在compute下增加信息：[compute]B-OPS-9-2 network_interface=eth0 api_interface=eth0 storage_interface=eth4 tunnel_interface=eth1执行扩容kolla-ansible deploy -i /kolla-ansible-queens/multinodes]]></content>
+      <categories>
+        <category>openstack</category>
+        <category>kolla</category>
+      </categories>
+      <tags>
+        <tag>升级</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[DIB安装使用指南]]></title>
     <url>%2F2018%2F10%2F08%2Fopenstack-dib-install%2F</url>
     <content type="text"><![CDATA[简介： diskimage-builder是openstack社区用于制作镜像的一个工具. 它的源码地址位于: https://github.com/openstack/diskimage-builder 官方的文档位于: http://docs.openstack.org/developer/diskimage-builder/ 安装： 1.1 pip安装 $ pip install diskimage-builder 1.2 源码安装 $ git clone https://github.com/openstack/diskimage-builder.git -b 2.9.0 $ cd diskimage-builder &amp;&amp; python set.py install $ apt-get install qemu kpartx $ pip install networkx==1.11（只支持1.11版本） 使用： 制作ubuntu镜像，镜像中安装qemu-guest-agent服务$ disk-image-create -o ubuntu-trusty -t raw -p qemu-guest-agent ubuntu vm devuser cloud-init-datasources 制作octavia服务镜像$ git clone http://10.20.0.196/kernel/octavia.git -b ocata$ cd /root/octavia/octavia/diskimage-create &amp;&amp; ./diskimage-create.sh -x -s 2 -d trusty -o /root/octavia/amphora.img]]></content>
