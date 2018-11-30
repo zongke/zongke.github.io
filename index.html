@@ -359,12 +359,24 @@
                 
               
 
-              <time title="创建时间：2018-11-29 01:11:19 / 修改时间：01:15:29" itemprop="dateCreated datePublished" datetime="2018-11-29T01:11:19+00:00">2018-11-29</time>
+              <time title="创建时间：2018-11-29 01:11:19" itemprop="dateCreated datePublished" datetime="2018-11-29T01:11:19+00:00">2018-11-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-30 02:05:40" itemprop="dateModified" datetime="2018-11-30T02:05:40+00:00">2018-11-30</time>
               
             
           </span>
@@ -433,11 +445,15 @@
 
       
         
-          
-            <p>注：本升级方案仅适用于Docker部署的openstack环境<br>方案背景<br>  由于openstack迭代很快，每个版本会修复很多Bug，引入很多特性，有一些问题修复和特性引入是我们所需要的功能，想增加到环境中；我们本身也修复了一些问题，增加了一些特性，想升级到生产环境中去。<br>通过环境热升级，我们可以将特性或者修复的Bug合入到我们的版本中去，且不影响当前环境使用。<br>所以版本热升级则不可避免。<br>方案概述<br>  我们采用容器镜像替换的方式升级云环境。<br>首先制作新镜像，将新代码打包到新镜像中<br>其次在各节点上更新镜像，使用kolla upgrade命令，升级配置，升级数据库，使用新镜像重启容器，完成组件升级。<br>最大限度保证业务不中断，升级失败可快速回退至原镜像。<br>升级目标<br>    热升级，业务无影响<br>    升级失败可回退，业务无影响<br>前期准备<br>制作新版本镜像<br>将新特性，或者修复的bug更新到公司代码库，使用kolla项目制作各组件镜像：kolla-build –config-file /home/zongk/kolla/etc/kolla/kolla-build.conf -t source -b ubuntu neutron<br>备份配置文件 <strong>*</strong><br>将各节点配置文件保存，很重要，如果升级失败，需要回退版本时，可直接使用。<br>备份数据库 <strong>*</strong><br>将数据库备份，很重要，如果升级失败，需要回退版本时，可直接使用。（最新版本自动化部署已经将数据库备份集成，每天凌晨2点会自动全量备份数据库，如果认为该备份已是最新数据库备份，可不备份数据库，但建议每次升级都重新备份下数据库）<br>升级步骤<br>下载镜像<br>将新版本镜像下载至个节点上，例如：升级Nova组件，在各节点上拉取Nova组件最新镜像：<br>git pull images.neunn.com/ncloud/nova-xxx:3.0.0<br>更新配置<br>在新特性或者bug需要修改的配置<br>执行升级<br>在部署节点上执行:kolla-ansible upgrade -i /kolla-ansible/deploy-ui/conf/multinodes –t nova<br>升级验证<br>查看各节点nova服务log，看是否运行正常<br>创建虚机测试<br>（后续增加tempest服务后，可用tempest测试）</p>
-<p>注：P版本之后的kolla-ansible，可以通过增–host 参数支持单节点升级<br>扩容节点（已增加到新版部署平台）<br>扩容不支持扩容控制节点，只支持扩容计算存储网络节点<br>命令行扩容<br>修改配置文件<br>在部署虚机中修改节点配置文件，增加待扩容节点信息/kolla-ansible/deploy-ui/AutoDeploy/scripts/conf/multimode<br>例如要扩容计算节点，在compute下增加信息：<br>[compute]<br>B-OPS-9-2 network_interface=eth0 api_interface=eth0 storage_interface=eth4 tunnel_interface=eth1<br>执行扩容<br>kolla-ansible deploy -i /kolla-ansible-queens/multinodes</p>
-
-          
+          <p>注：本升级方案仅适用于Docker部署的openstack环境<br>方案背景<br>    由于openstack迭代很快，每个版本会修复很多Bug，引入很多特性，有一些问题修复和特性引入是我们所需要的功能，想增加到环境中；我们本身也修复了一些问题，增加了一些特性，想升级到生产环境中去。<br>    通过环境热升级，我们可以将特性或者修复的Bug合入到我们的版本中去，且不影响当前环境使用。<br>    所以版本热升级则不可避免。</p>
+<p>方案概述<br>    我们采用容器镜像替换的方式升级云环境。<br>    首先制作新镜像，将新代码打包到新镜像中<br>    其次在各节点上更新镜像，使用kolla upgrade命令，升级配置，升级数据库，使用新镜像重启容器，完成组件升级。<br>    最大限度保证业务不中断，升级失败可快速回退至原镜像。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/29/openstack集群热升级方案/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -535,12 +551,24 @@
                 
               
 
-              <time title="创建时间：2018-10-08 07:23:25 / 修改时间：07:36:43" itemprop="dateCreated datePublished" datetime="2018-10-08T07:23:25+00:00">2018-10-08</time>
+              <time title="创建时间：2018-10-08 07:23:25" itemprop="dateCreated datePublished" datetime="2018-10-08T07:23:25+00:00">2018-10-08</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-30 01:54:06" itemprop="dateModified" datetime="2018-11-30T01:54:06+00:00">2018-11-30</time>
               
             
           </span>
@@ -609,16 +637,14 @@
 
       
         
-          
-            <p>简介：<br>  diskimage-builder是openstack社区用于制作镜像的一个工具.<br>  它的源码地址位于: <a href="https://github.com/openstack/diskimage-builder" target="_blank" rel="noopener">https://github.com/openstack/diskimage-builder</a><br>  官方的文档位于: <a href="http://docs.openstack.org/developer/diskimage-builder/" target="_blank" rel="noopener">http://docs.openstack.org/developer/diskimage-builder/</a></p>
-<p>安装：<br>  1.1 pip安装<br>    $ pip install diskimage-builder<br>  1.2 源码安装<br>    $ git clone <a href="https://github.com/openstack/diskimage-builder.git" target="_blank" rel="noopener">https://github.com/openstack/diskimage-builder.git</a> -b 2.9.0<br>    $ cd diskimage-builder &amp;&amp; python set.py install<br>    $ apt-get install qemu kpartx<br>    $ pip install networkx==1.11（只支持1.11版本）    </p>
-<p>使用：</p>
-<ol>
-<li>制作ubuntu镜像，镜像中安装qemu-guest-agent服务<br>$ disk-image-create -o ubuntu-trusty -t raw -p qemu-guest-agent ubuntu vm devuser cloud-init-datasources</li>
-<li>制作octavia服务镜像<br>$ git clone <a href="http://10.20.0.196/kernel/octavia.git" target="_blank" rel="noopener">http://10.20.0.196/kernel/octavia.git</a> -b ocata<br>$ cd /root/octavia/octavia/diskimage-create &amp;&amp; ./diskimage-create.sh -x -s 2 -d trusty -o /root/octavia/amphora.img</li>
-</ol>
-
-          
+          <p>简介：<br>  diskimage-builder是openstack社区用于制作镜像的一个工具.<br>  它的源码地址位于: <a href="https://github.com/openstack/diskimage-builder" target="_blank" rel="noopener">https://github.com/openstack/diskimage-builder</a><br>  官方的文档位于: <a href="http://docs.openstack.org/developer/diskimage-builder/" target="_blank" rel="noopener">http://docs.openstack.org/developer/diskimage-builder/</a></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/08/openstack-dib-install/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -716,12 +742,24 @@
                 
               
 
-              <time title="创建时间：2018-10-08 07:18:10 / 修改时间：07:39:37" itemprop="dateCreated datePublished" datetime="2018-10-08T07:18:10+00:00">2018-10-08</time>
+              <time title="创建时间：2018-10-08 07:18:10" itemprop="dateCreated datePublished" datetime="2018-10-08T07:18:10+00:00">2018-10-08</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-30 01:52:58" itemprop="dateModified" datetime="2018-11-30T01:52:58+00:00">2018-11-30</time>
               
             
           </span>
@@ -790,10 +828,9 @@
 
       
         
-          
-            <p>问题现象：使用DIB制作openstack镜像，报错：KeyError: ‘blockdev’</p>
-<pre><code>具体错误信息如下：
-2018-10-08 06:38:45.370 | Traceback (most recent call last):
+          <p>问题现象：使用DIB制作openstack镜像，报错：KeyError: ‘blockdev’</p>
+<p>具体错误信息如下：</p>
+<pre><code>2018-10-08 06:38:45.370 | Traceback (most recent call last):
 2018-10-08 06:38:45.370 |   File &quot;/usr/local/bin/dib-block-device&quot;, line 10, in &lt;module&gt;
 2018-10-08 06:38:45.370 |     sys.exit(main())
 2018-10-08 06:38:45.370 |   File &quot;/usr/local/lib/python2.7/dist-packages/diskimage_builder/block_device/cmd.py&quot;, line 120, in main
@@ -808,9 +845,14 @@
 2018-10-08 06:38:45.371 |     return self.state[key]
 2018-10-08 06:38:45.371 | KeyError: &apos;blockdev&apos;
 2018-10-08 06:38:46.629 | *** /tmp/dib_build.tvBGMDYf/mnt is not a directory
-</code></pre><p>问题原因：由于networkx版本和DIB源码版本对应不上导致，DIB最新代码支持networkx 3.x版本，但是由于代码问题，回退到了支持2.x版本，但是很多情况下还是有问题<br>解决办法：将networkx降级，降到1.11版本，测试通过<br>          $ pip install -U networkx=1.11</p>
-
-          
+</code></pre>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/08/openstack_dib_error/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1298,7 +1340,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-30 01:46:55" itemprop="dateModified" datetime="2018-11-30T01:46:55+00:00">2018-11-30</time>
+                <time title="修改时间：2018-11-30 01:51:09" itemprop="dateModified" datetime="2018-11-30T01:51:09+00:00">2018-11-30</time>
               
             
           </span>
@@ -1367,8 +1409,7 @@
 
       
         
-          <p>问题现象：<br>当使用kolla命令制作openstack镜像时，报下列错误：</p>
-<p>INFO:kolla.common.utils:Image squash is disabled<br>INFO:kolla.common.utils:Found the docker image folder at /usr/local/share/kolla/docker<br>Traceback (most recent call last):<br>  File “/usr/local/bin/kolla-build”, line 10, in <module><br>    sys.exit(main())<br>  File “/usr/local/lib/python2.7/dist-packages/kolla/cmd/build.py”, line 30, in main<br>    statuses = build.run_build()<br>  File “/usr/local/lib/python2.7/dist-packages/kolla/image/build.py”, line 1260, in run_build<br>    kolla.create_dockerfiles()<br>  File “/usr/local/lib/python2.7/dist-packages/kolla/image/build.py”, line 899, in create_dockerfiles<br>    content = template.render(values, env=os.environ)<br>  File “/usr/local/lib/python2.7/dist-packages/jinja2/environment.py”, line 1008, in render<br>    return self.environment.handle_exception(exc_info, True)<br>  File “/usr/local/lib/python2.7/dist-packages/jinja2/environment.py”, line 780, in handle_exception<br>    reraise(exc_type, exc_value, tb)<br>  File “/tmp/kolla-2018-07-11_05-18-23_39cbVG/docker/heka/Dockerfile.j2”, line 8, in top-level template code<br>  File “/usr/local/lib/python2.7/dist-packages/jinja2/runtime.py”, line 553, in _invoke<br>    rv = self._func(*arguments)<br>  File “/tmp/kolla-2018-07-11_05-18-23_39cbVG/docker/macros.j2”, line 47, in template<br>  File “/usr/local/lib/python2.7/dist-packages/jinja2/environment.py”, line 430, in getattr<br>    return getattr(obj, attribute)<br>jinja2.exceptions.UndefinedError: ‘dict object’ has no attribute ‘heka’<br>
+          <p>问题现象：<br>当使用kolla命令制作openstack镜像时，报’dict object’ has no attribute ‘heka’错误<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/26/kolla_image_error/#more" rel="contents">
@@ -1473,12 +1514,24 @@
                 
               
 
-              <time title="创建时间：2018-09-26 05:42:13 / 修改时间：06:09:12" itemprop="dateCreated datePublished" datetime="2018-09-26T05:42:13+00:00">2018-09-26</time>
+              <time title="创建时间：2018-09-26 05:42:13" itemprop="dateCreated datePublished" datetime="2018-09-26T05:42:13+00:00">2018-09-26</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-11-30 02:11:47" itemprop="dateModified" datetime="2018-11-30T02:11:47+00:00">2018-11-30</time>
               
             
           </span>
@@ -1540,12 +1593,14 @@
 
       
         
-          
-            <p>问题现象：<br>pip install执行失败时，报下列错误：<br>Traceback (most recent call last):<br>  File “/usr/local/bin/pip”, line 9, in <module><br>    load_entry_point(‘pip==10.0.1’, ‘console_scripts’, ‘pip’)()<br>  File “/usr/lib/python2.7/dist-packages/pkg_resources/<strong>init</strong>.py”, line 542, in load_entry_point<br>    return get_distribution(dist).load_entry_point(group, name)<br>  File “/usr/lib/python2.7/dist-packages/pkg_resources/<strong>init</strong>.py”, line 2569, in load_entry_point<br>    return ep.load()<br>  File “/usr/lib/python2.7/dist-packages/pkg_resources/<strong>init</strong>.py”, line 2229, in load<br>    return self.resolve()<br>  File “/usr/lib/python2.7/dist-packages/pkg_resources/<strong>init</strong>.py”, line 2235, in resolve<br>    module = <strong>import</strong>(self.module_name, fromlist=[‘<strong>name</strong>‘], level=0)<br>  File “/usr/local/lib/python2.7/dist-packages/pip-10.0.1-py2.7.egg/pip/_internal/<strong>init</strong>.py”, line 42, in <module><br>    from pip._internal import cmdoptions<br>  File “/usr/local/lib/python2.7/dist-packages/pip-10.0.1-py2.7.egg/pip/_internal/cmdoptions.py”, line 16, in <module><br>    from pip._internal.index import (<br>  File “/usr/local/lib/python2.7/dist-packages/pip-10.0.1-py2.7.egg/pip/_internal/index.py”, line 15, in <module><br>    from pip._vendor import html5lib, requests, six<br>  File “/usr/local/lib/python2.7/dist-packages/pip-10.0.1-py2.7.egg/pip/_vendor/requests/<strong>init</strong>.py”, line 86, in <module><br>    from pip._vendor.urllib3.contrib import pyopenssl<br>  File “/usr/local/lib/python2.7/dist-packages/pip-10.0.1-py2.7.egg/pip/_vendor/urllib3/contrib/pyopenssl.py”, line 46, in <module><br>    import OpenSSL.SSL<br>  File “/usr/lib/python2.7/dist-packages/OpenSSL/<strong>init</strong>.py”, line 8, in <module><br>    from OpenSSL import rand, crypto, SSL<br>  File “/usr/lib/python2.7/dist-packages/OpenSSL/SSL.py”, line 118, in <module><br>    SSL_ST_INIT = _lib.SSL_ST_INIT<br>AttributeError: ‘module’ object has no attribute ‘SSL_ST_INIT’</module></module></module></module></module></module></module></module></p>
-<p>问题原因：<br>OpenSSL版本太低</p>
-<p>解决办法：<br><a href="https://stackoverflow.com/questions/51019860/error-with-pip-after-upgrading-module-object-has-no-attribute-ssl-st-init" target="_blank" rel="noopener">https://stackoverflow.com/questions/51019860/error-with-pip-after-upgrading-module-object-has-no-attribute-ssl-st-init</a><br>python -m easy_install –upgrade pyOpenSSL</p>
-
-          
+          <p>问题现象：<br>pip install执行失败时，报错误’module’ object has no attribute ‘SSL_ST_INIT’：<br>具体错误信息如下：<br>Traceback (most recent call last):<br>  File “/usr/local/bin/pip”, line 9, in <module><br>    load_entry_point(‘pip==10.0.1’, ‘console_scripts’, ‘pip’)()<br>  File “/usr/lib/python2.7/dist-packages/pkg_resources/<strong>init</strong>.py”, line 542, in load_entry_point<br>    return get_distribution(dist).load_entry_point(group, name)<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/26/pip_install_errors/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1843,7 +1898,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-30 01:34:03" itemprop="dateModified" datetime="2018-09-30T01:34:03+00:00">2018-09-30</time>
+                <time title="修改时间：2018-11-30 01:56:00" itemprop="dateModified" datetime="2018-11-30T01:56:00+00:00">2018-11-30</time>
               
             
           </span>
@@ -1912,25 +1967,18 @@
 
       
         
-          
-            <ol>
+          <ol>
 <li>首先根据neutron v2.5分支打出neutron deb包</li>
 <li>备份neutron代码及/etc/neutron中的配置文件（重要）</li>
 <li>L版生产环境L3路由信息，查出主备信息，目前看：网络节点node1和node3是一组，node2和node4是一组；其中node1上31个router，node2上34个router</li>
-<li>Node1 node3一组，在node3上对每个router查看是否是active节点，如果是active，则执行：ip netns exec qrouter-xxx ifconfig ha-xxx down，把active切换成backup</li>
-<li>查询node3上的router是否都已切换成backup</li>
-<li>执行升级步骤：<br>a.    安装deb包<br>b.    创建数据库表: floatingipsqos_policies, qos_floatingip_policy_bindings, floatingipsqos_bandwidth_limit_rules<br>c.    重启neutron-l3、neutron-dhcp、neutron-openvswitch等agent</li>
-<li>测试：创建router，看node3上是否创建成功，将node3上的该新创建的router切换成active，看路由是否能通，并且创建新的fip测试qos功能，如果成功，则切换一个真实用户router试试，没问题切换所有router</li>
-<li>Node3升级完成后，将node1上的所有router切换成backup，备份neutron代码，升级neutron代码</li>
-<li>Node2 node4相同操作执行</li>
-</ol>
-<p>备注：</p>
-<ol>
-<li>备份代码是为了升级失败后，可以回退代码到原始版本，不会造成代码不一致问题</li>
-<li>创建新router测试成功后，应该找一个使用率较低的真实router测试</li>
-</ol>
-
-          
+<li>Node1 node3一组，在node3上对每个router查看是否是active节点，如果是active，则执行：ip netns exec qrouter-xxx ifconfig ha-xxx down，把active切换成backup
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/20/openstack_neutron_upgrade/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2045,7 +2093,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-29 08:01:06" itemprop="dateModified" datetime="2018-09-29T08:01:06+00:00">2018-09-29</time>
+                <time title="修改时间：2018-11-30 01:54:53" itemprop="dateModified" datetime="2018-11-30T01:54:53+00:00">2018-11-30</time>
               
             
           </span>
@@ -2114,28 +2162,19 @@
 
       
         
-          
-            <ol>
+          <ol>
 <li><p>问题现象: nova libvirt容器启动失败，报错：libvirt-admin.so.0: cannot open shared object file: Permission denied</p>
 <p>解决方案: <a href="https://docs.openstack.org/project-deploy-guide/kolla-ansible/pike/quickstart.html" target="_blank" rel="noopener">https://docs.openstack.org/project-deploy-guide/kolla-ansible/pike/quickstart.html</a></p>
 <pre><code>在服务器上执行：$ apparmor_parser -R /etc/apparmor.d/usr.sbin.libvirtd # 禁用libvirt profile
 </code></pre></li>
 </ol>
-<ol start="2">
-<li><p>问题现象: 创建虚机的时候，nova compute连接libvirt失败：libvirtError: internal error: process exited while connecting to monitor: Could not access KVM kernel module: Permission denied</p>
-<p>快速解决方案: <a href="https://ask.openstack.org/en/question/56257/failed-to-intialize-kvm-hypervisor-permission-denied/" target="_blank" rel="noopener">https://ask.openstack.org/en/question/56257/failed-to-intialize-kvm-hypervisor-permission-denied/</a></p>
-<p>修改/etc/kolla/nova-libvirt/qemu.conf  user=root group=root<br>重启libvirt容器</p>
-<p>以上是临时解决方案，真正原因是/dev/kvm权限问题引起的<br>服务器上执行：<br>  $ getfacl /dev/kvm</p>
-<pre><code>user::rw-
-user:ubuntu:rw-
-group::---
-mask::rw-
-other::--
-</code></pre><p>其中group没有执行权限，导致一直报permission denied错误<br>真正解决办法：<br>  $ setfacl -b /dev/kvm             # 清楚acl权限<br>  $ setfacl -m group::rw- /dev/kvm  # 给group增加权限<br>  $ 修改/etc/kolla/nova-libvirt/qemu.conf  user=nova group=nova  # 如果被改成root，则改回nova<br>  $ docker restart nova_libvirt     # 重启libvirt容器</p>
-</li>
-</ol>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/20/openstack_libvirt_errors/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
