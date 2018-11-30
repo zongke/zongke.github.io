@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="问题现象：使用DIB制作openstack镜像，报错：KeyError: ‘blockdev’ 具体错误信息如下： 2018-10-08 06:38:45.370 | Traceback (most recent call last): 2018-10-08 06:38:45.370 |   File &amp;quot;/usr/local/bin/dib-block-device&amp;quot;, lin">
-<meta name="keywords" content="问题">
+  <meta name="description" content="简介：  diskimage-builder是openstack社区用于制作镜像的一个工具.  它的源码地址位于: https://github.com/openstack/diskimage-builder  官方的文档位于: http://docs.openstack.org/developer/diskimage-builder/">
+<meta name="keywords" content="install">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用DIB制作openstack镜像，报错&#39;blockdev&#39;">
-<meta property="og:url" content="http://zkaa.club/2018/10/08/openstack_dib_error/index.html">
+<meta property="og:title" content="DIB安装使用指南">
+<meta property="og:url" content="http://zkaa.club/2018/10/08/openstack_dib_install/index.html">
 <meta property="og:site_name" content="安安">
-<meta property="og:description" content="问题现象：使用DIB制作openstack镜像，报错：KeyError: ‘blockdev’ 具体错误信息如下： 2018-10-08 06:38:45.370 | Traceback (most recent call last): 2018-10-08 06:38:45.370 |   File &amp;quot;/usr/local/bin/dib-block-device&amp;quot;, lin">
+<meta property="og:description" content="简介：  diskimage-builder是openstack社区用于制作镜像的一个工具.  它的源码地址位于: https://github.com/openstack/diskimage-builder  官方的文档位于: http://docs.openstack.org/developer/diskimage-builder/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-30T01:52:58.754Z">
+<meta property="og:updated_time" content="2018-11-30T01:54:06.002Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用DIB制作openstack镜像，报错&#39;blockdev&#39;">
-<meta name="twitter:description" content="问题现象：使用DIB制作openstack镜像，报错：KeyError: ‘blockdev’ 具体错误信息如下： 2018-10-08 06:38:45.370 | Traceback (most recent call last): 2018-10-08 06:38:45.370 |   File &amp;quot;/usr/local/bin/dib-block-device&amp;quot;, lin">
+<meta name="twitter:title" content="DIB安装使用指南">
+<meta name="twitter:description" content="简介：  diskimage-builder是openstack社区用于制作镜像的一个工具.  它的源码地址位于: https://github.com/openstack/diskimage-builder  官方的文档位于: http://docs.openstack.org/developer/diskimage-builder/">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zkaa.club/2018/10/08/openstack_dib_error/"/>
+  <link rel="canonical" href="http://zkaa.club/2018/10/08/openstack_dib_install/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>使用DIB制作openstack镜像，报错'blockdev' | 安安</title>
+  <title>DIB安装使用指南 | 安安</title>
   
 
 
@@ -317,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zkaa.club/2018/10/08/openstack_dib_error/">
+    <link itemprop="mainEntityOfPage" href="http://zkaa.club/2018/10/08/openstack_dib_install/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zongke">
@@ -334,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用DIB制作openstack镜像，报错'blockdev'
+          <h1 class="post-title" itemprop="name headline">DIB安装使用指南
               
             
           </h1>
@@ -359,7 +359,7 @@
                 
               
 
-              <time title="创建时间：2018-10-08 07:18:10" itemprop="dateCreated datePublished" datetime="2018-10-08T07:18:10+00:00">2018-10-08</time>
+              <time title="创建时间：2018-10-08 07:23:25" itemprop="dateCreated datePublished" datetime="2018-10-08T07:23:25+00:00">2018-10-08</time>
             
 
             
@@ -376,7 +376,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-30 01:52:58" itemprop="dateModified" datetime="2018-11-30T01:52:58+00:00">2018-11-30</time>
+                <time title="修改时间：2018-11-30 01:54:06" itemprop="dateModified" datetime="2018-11-30T01:54:06+00:00">2018-11-30</time>
               
             
           </span>
@@ -415,8 +415,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/08/openstack_dib_error/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/10/08/openstack_dib_error/" itemprop="commentCount"></span>
+                <a href="/2018/10/08/openstack_dib_install/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/10/08/openstack_dib_install/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -444,25 +444,14 @@
       
 
       
-        <p>问题现象：使用DIB制作openstack镜像，报错：KeyError: ‘blockdev’</p>
-<p>具体错误信息如下：</p>
-<pre><code>2018-10-08 06:38:45.370 | Traceback (most recent call last):
-2018-10-08 06:38:45.370 |   File &quot;/usr/local/bin/dib-block-device&quot;, line 10, in &lt;module&gt;
-2018-10-08 06:38:45.370 |     sys.exit(main())
-2018-10-08 06:38:45.370 |   File &quot;/usr/local/lib/python2.7/dist-packages/diskimage_builder/block_device/cmd.py&quot;, line 120, in main
-2018-10-08 06:38:45.370 |     return bdc.main()
-2018-10-08 06:38:45.370 |   File &quot;/usr/local/lib/python2.7/dist-packages/diskimage_builder/block_device/cmd.py&quot;, line 115, in main
-2018-10-08 06:38:45.370 |     self.args.func()
-2018-10-08 06:38:45.370 |   File &quot;/usr/local/lib/python2.7/dist-packages/diskimage_builder/block_device/cmd.py&quot;, line 33, in cmd_getval
-2018-10-08 06:38:45.371 |     self.bd.cmd_getval(self.args.symbol)
-2018-10-08 06:38:45.371 |   File &quot;/usr/local/lib/python2.7/dist-packages/diskimage_builder/block_device/blockdevice.py&quot;, line 317, in cmd_getval
-2018-10-08 06:38:45.371 |     print(&quot;%s&quot; % state[&apos;blockdev&apos;][&apos;image0&apos;][&apos;device&apos;])
-2018-10-08 06:38:45.371 |   File &quot;/usr/local/lib/python2.7/dist-packages/diskimage_builder/block_device/blockdevice.py&quot;, line 85, in __getitem__
-2018-10-08 06:38:45.371 |     return self.state[key]
-2018-10-08 06:38:45.371 | KeyError: &apos;blockdev&apos;
-2018-10-08 06:38:46.629 | *** /tmp/dib_build.tvBGMDYf/mnt is not a directory
-</code></pre><a id="more"></a>
-<p>问题原因：由于networkx版本和DIB源码版本对应不上导致，DIB最新代码支持networkx 3.x版本，但是由于代码问题，回退到了支持2.x版本，但是很多情况下还是有问题<br>解决办法：将networkx降级，降到1.11版本，测试通过<br>          $ pip install -U networkx=1.11</p>
+        <p>简介：<br>  diskimage-builder是openstack社区用于制作镜像的一个工具.<br>  它的源码地址位于: <a href="https://github.com/openstack/diskimage-builder" target="_blank" rel="noopener">https://github.com/openstack/diskimage-builder</a><br>  官方的文档位于: <a href="http://docs.openstack.org/developer/diskimage-builder/" target="_blank" rel="noopener">http://docs.openstack.org/developer/diskimage-builder/</a></p>
+<a id="more"></a>
+<p>安装：<br>  1.1 pip安装<br>    $ pip install diskimage-builder<br>  1.2 源码安装<br>    $ git clone <a href="https://github.com/openstack/diskimage-builder.git" target="_blank" rel="noopener">https://github.com/openstack/diskimage-builder.git</a> -b 2.9.0<br>    $ cd diskimage-builder &amp;&amp; python set.py install<br>    $ apt-get install qemu kpartx<br>    $ pip install networkx==1.11（只支持1.11版本）    </p>
+<p>使用：</p>
+<ol>
+<li>制作ubuntu镜像，镜像中安装qemu-guest-agent服务<br>$ disk-image-create -o ubuntu-trusty -t raw -p qemu-guest-agent ubuntu vm devuser cloud-init-datasources</li>
+<li>制作octavia服务镜像<br>$ git clone <a href="http://10.20.0.196/kernel/octavia.git" target="_blank" rel="noopener">http://10.20.0.196/kernel/octavia.git</a> -b ocata<br>$ cd /root/octavia/octavia/diskimage-create &amp;&amp; ./diskimage-create.sh -x -s 2 -d trusty -o /root/octavia/amphora.img</li>
+</ol>
 
       
     </div>
@@ -483,7 +472,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/问题/" rel="tag"># 问题</a>
+            <a href="/tags/install/" rel="tag"># install</a>
           
         </div>
       
@@ -496,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/29/openstack_vm_VPN/" rel="next" title="openstack虚机搭建VPN Server：ERROR Code 806">
-                <i class="fa fa-chevron-left"></i> openstack虚机搭建VPN Server：ERROR Code 806
+              <a href="/2018/10/08/openstack_dib_error/" rel="next" title="使用DIB制作openstack镜像，报错'blockdev'">
+                <i class="fa fa-chevron-left"></i> 使用DIB制作openstack镜像，报错'blockdev'
               </a>
             
           </div>
@@ -506,8 +495,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/08/openstack_dib_install/" rel="prev" title="DIB安装使用指南">
-                DIB安装使用指南 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/29/openstack_region_upgrade/" rel="prev" title="openstack集群热升级方案">
+                openstack集群热升级方案 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

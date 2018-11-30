@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="问题现象：使用DIB制作openstack镜像，报错：KeyError: ‘blockdev’ 具体错误信息如下： 2018-10-08 06:38:45.370 | Traceback (most recent call last): 2018-10-08 06:38:45.370 |   File &amp;quot;/usr/local/bin/dib-block-device&amp;quot;, lin">
-<meta name="keywords" content="问题">
+  <meta name="description" content="注：本升级方案仅适用于Docker部署的openstack环境 方案背景 由于openstack迭代很快，每个版本会修复很多Bug，引入很多特性，有一些问题修复和特性引入是我们所需要的功能，想增加到环境中；我们本身也修复了一些问题，增加了一些特性，想升级到生产环境中去。 通过环境热升级，我们可以将特性或者修复的Bug合入到我们的版本中去，且不影响当前环境使用。 所以版本热升级则不可避免。 方案概述">
+<meta name="keywords" content="升级">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用DIB制作openstack镜像，报错&#39;blockdev&#39;">
-<meta property="og:url" content="http://zkaa.club/2018/10/08/openstack_dib_error/index.html">
+<meta property="og:title" content="openstack集群热升级方案">
+<meta property="og:url" content="http://zkaa.club/2018/11/29/openstack_region_upgrade/index.html">
 <meta property="og:site_name" content="安安">
-<meta property="og:description" content="问题现象：使用DIB制作openstack镜像，报错：KeyError: ‘blockdev’ 具体错误信息如下： 2018-10-08 06:38:45.370 | Traceback (most recent call last): 2018-10-08 06:38:45.370 |   File &amp;quot;/usr/local/bin/dib-block-device&amp;quot;, lin">
+<meta property="og:description" content="注：本升级方案仅适用于Docker部署的openstack环境 方案背景 由于openstack迭代很快，每个版本会修复很多Bug，引入很多特性，有一些问题修复和特性引入是我们所需要的功能，想增加到环境中；我们本身也修复了一些问题，增加了一些特性，想升级到生产环境中去。 通过环境热升级，我们可以将特性或者修复的Bug合入到我们的版本中去，且不影响当前环境使用。 所以版本热升级则不可避免。 方案概述">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-30T01:52:58.754Z">
+<meta property="og:updated_time" content="2018-11-30T02:49:23.638Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用DIB制作openstack镜像，报错&#39;blockdev&#39;">
-<meta name="twitter:description" content="问题现象：使用DIB制作openstack镜像，报错：KeyError: ‘blockdev’ 具体错误信息如下： 2018-10-08 06:38:45.370 | Traceback (most recent call last): 2018-10-08 06:38:45.370 |   File &amp;quot;/usr/local/bin/dib-block-device&amp;quot;, lin">
+<meta name="twitter:title" content="openstack集群热升级方案">
+<meta name="twitter:description" content="注：本升级方案仅适用于Docker部署的openstack环境 方案背景 由于openstack迭代很快，每个版本会修复很多Bug，引入很多特性，有一些问题修复和特性引入是我们所需要的功能，想增加到环境中；我们本身也修复了一些问题，增加了一些特性，想升级到生产环境中去。 通过环境热升级，我们可以将特性或者修复的Bug合入到我们的版本中去，且不影响当前环境使用。 所以版本热升级则不可避免。 方案概述">
 
 
 
 
 
 
-  <link rel="canonical" href="http://zkaa.club/2018/10/08/openstack_dib_error/"/>
+  <link rel="canonical" href="http://zkaa.club/2018/11/29/openstack_region_upgrade/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>使用DIB制作openstack镜像，报错'blockdev' | 安安</title>
+  <title>openstack集群热升级方案 | 安安</title>
   
 
 
@@ -317,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://zkaa.club/2018/10/08/openstack_dib_error/">
+    <link itemprop="mainEntityOfPage" href="http://zkaa.club/2018/11/29/openstack_region_upgrade/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zongke">
@@ -334,7 +334,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用DIB制作openstack镜像，报错'blockdev'
+          <h1 class="post-title" itemprop="name headline">openstack集群热升级方案
               
             
           </h1>
@@ -359,7 +359,7 @@
                 
               
 
-              <time title="创建时间：2018-10-08 07:18:10" itemprop="dateCreated datePublished" datetime="2018-10-08T07:18:10+00:00">2018-10-08</time>
+              <time title="创建时间：2018-11-29 01:11:19" itemprop="dateCreated datePublished" datetime="2018-11-29T01:11:19+00:00">2018-11-29</time>
             
 
             
@@ -376,7 +376,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-30 01:52:58" itemprop="dateModified" datetime="2018-11-30T01:52:58+00:00">2018-11-30</time>
+                <time title="修改时间：2018-11-30 02:49:23" itemprop="dateModified" datetime="2018-11-30T02:49:23+00:00">2018-11-30</time>
               
             
           </span>
@@ -400,7 +400,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/openstack/DIB/" itemprop="url" rel="index"><span itemprop="name">DIB</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/openstack/kolla/" itemprop="url" rel="index"><span itemprop="name">kolla</span></a></span>
 
                 
                 
@@ -415,8 +415,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/10/08/openstack_dib_error/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/10/08/openstack_dib_error/" itemprop="commentCount"></span>
+                <a href="/2018/11/29/openstack_region_upgrade/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count valine-comment-count" data-xid="/2018/11/29/openstack_region_upgrade/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -444,26 +444,64 @@
       
 
       
-        <p>问题现象：使用DIB制作openstack镜像，报错：KeyError: ‘blockdev’</p>
-<p>具体错误信息如下：</p>
-<pre><code>2018-10-08 06:38:45.370 | Traceback (most recent call last):
-2018-10-08 06:38:45.370 |   File &quot;/usr/local/bin/dib-block-device&quot;, line 10, in &lt;module&gt;
-2018-10-08 06:38:45.370 |     sys.exit(main())
-2018-10-08 06:38:45.370 |   File &quot;/usr/local/lib/python2.7/dist-packages/diskimage_builder/block_device/cmd.py&quot;, line 120, in main
-2018-10-08 06:38:45.370 |     return bdc.main()
-2018-10-08 06:38:45.370 |   File &quot;/usr/local/lib/python2.7/dist-packages/diskimage_builder/block_device/cmd.py&quot;, line 115, in main
-2018-10-08 06:38:45.370 |     self.args.func()
-2018-10-08 06:38:45.370 |   File &quot;/usr/local/lib/python2.7/dist-packages/diskimage_builder/block_device/cmd.py&quot;, line 33, in cmd_getval
-2018-10-08 06:38:45.371 |     self.bd.cmd_getval(self.args.symbol)
-2018-10-08 06:38:45.371 |   File &quot;/usr/local/lib/python2.7/dist-packages/diskimage_builder/block_device/blockdevice.py&quot;, line 317, in cmd_getval
-2018-10-08 06:38:45.371 |     print(&quot;%s&quot; % state[&apos;blockdev&apos;][&apos;image0&apos;][&apos;device&apos;])
-2018-10-08 06:38:45.371 |   File &quot;/usr/local/lib/python2.7/dist-packages/diskimage_builder/block_device/blockdevice.py&quot;, line 85, in __getitem__
-2018-10-08 06:38:45.371 |     return self.state[key]
-2018-10-08 06:38:45.371 | KeyError: &apos;blockdev&apos;
-2018-10-08 06:38:46.629 | *** /tmp/dib_build.tvBGMDYf/mnt is not a directory
+        <p>注：本升级方案仅适用于Docker部署的openstack环境</p>
+<p>方案背景</p>
+<pre><code>由于openstack迭代很快，每个版本会修复很多Bug，引入很多特性，有一些问题修复和特性引入是我们所需要的功能，想增加到环境中；我们本身也修复了一些问题，增加了一些特性，想升级到生产环境中去。
+通过环境热升级，我们可以将特性或者修复的Bug合入到我们的版本中去，且不影响当前环境使用。
+所以版本热升级则不可避免。
+</code></pre><p>方案概述</p>
+<pre><code>我们采用容器镜像替换的方式升级云环境。
+首先制作新镜像，将新代码打包到新镜像中
+ada次sadsd在各节点上更新镜像，使用kolla upgrade命令，升级配置，升级数据库，使用新镜像重启容器，完成组件升级。
+最大限度保证业务不中断，升级失败可快速回退至原镜像。
 </code></pre><a id="more"></a>
-<p>问题原因：由于networkx版本和DIB源码版本对应不上导致，DIB最新代码支持networkx 3.x版本，但是由于代码问题，回退到了支持2.x版本，但是很多情况下还是有问题<br>解决办法：将networkx降级，降到1.11版本，测试通过<br>          $ pip install -U networkx=1.11</p>
+<p>升级目标</p>
+<pre><code>热升级，业务无影响
+升级失败可回退，业务无影响
+</code></pre><p>前期准备</p>
+<pre><code>制作新版本镜像
 
+    将新特性，或者修复的bug更新到公司代码库，使用kolla项目制作各组件镜像：kolla-build --config-file /home/zongk/kolla/etc/kolla/kolla-build.conf -t source -b ubuntu neutron
+
+备份配置文件 *****
+
+    将各节点配置文件保存，很重要，如果升级失败，需要回退版本时，可直接使用。
+
+备份数据库 *****
+
+    将数据库备份，很重要，如果升级失败，需要回退版本时，可直接使用。（最新版本自动化部署已经将数据库备份集成，每天凌晨2点会自动全量备份数据库，如果认为该备份已是最新数据库备份，可不备份数据库，但建议每次升级都重新备份下数据库）
+</code></pre><p>升级步骤</p>
+<pre><code>下载镜像
+
+    将新版本镜像下载至个节点上，例如：升级Nova组件，在各节点上拉取Nova组件最新镜像：
+    $ git pull images.neunn.com/ncloud/nova-xxx:3.0.0
+
+更新配置
+
+    在新特性或者bug需要修改的配置
+
+执行升级
+
+    在部署节点上执行:
+    $ kolla-ansible upgrade -i /kolla-ansible/deploy-ui/conf/multinodes –t nova
+</code></pre><p>升级验证</p>
+<pre><code>查看各节点nova服务log，看是否运行正常
+创建虚机测试
+（后续增加tempest服务后，可用tempest测试）
+</code></pre><p>注：P版本之后的kolla-ansible，可以通过增–host 参数支持单节点升级<br>扩容节点（已增加到新版部署平台）</p>
+<p>扩容不支持扩容控制节点，只支持扩容计算存储网络节点</p>
+<p>命令行扩容</p>
+<pre><code>修改配置文件
+
+    在部署虚机中修改节点配置文件，增加待扩容节点信息/kolla-ansible/deploy-ui/AutoDeploy/scripts/conf/multimode
+    例如要扩容计算节点，在compute下增加信息：
+    [compute]
+    B-OPS-9-2 network_interface=eth0 api_interface=eth0 storage_interface=eth4 tunnel_interface=eth1
+
+执行扩容
+
+    $ kolla-ansible deploy -i /kolla-ansible-queens/multinodes
+</code></pre>
       
     </div>
 
@@ -483,7 +521,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/问题/" rel="tag"># 问题</a>
+            <a href="/tags/升级/" rel="tag"># 升级</a>
           
         </div>
       
@@ -496,8 +534,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/29/openstack_vm_VPN/" rel="next" title="openstack虚机搭建VPN Server：ERROR Code 806">
-                <i class="fa fa-chevron-left"></i> openstack虚机搭建VPN Server：ERROR Code 806
+              <a href="/2018/10/08/openstack_dib_install/" rel="next" title="DIB安装使用指南">
+                <i class="fa fa-chevron-left"></i> DIB安装使用指南
               </a>
             
           </div>
@@ -505,10 +543,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/08/openstack_dib_install/" rel="prev" title="DIB安装使用指南">
-                DIB安装使用指南 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
