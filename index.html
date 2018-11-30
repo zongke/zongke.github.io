@@ -1340,7 +1340,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-11-30 01:51:09" itemprop="dateModified" datetime="2018-11-30T01:51:09+00:00">2018-11-30</time>
+                <time title="修改时间：2018-11-30 02:41:54" itemprop="dateModified" datetime="2018-11-30T02:41:54+00:00">2018-11-30</time>
               
             
           </span>
@@ -1409,14 +1409,41 @@
 
       
         
-          <p>问题现象：<br>当使用kolla命令制作openstack镜像时，报’dict object’ has no attribute ‘heka’错误<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/26/kolla_image_error/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <p>问题现象：</p>
+<pre><code>当使用kolla命令制作openstack镜像时，报&apos;dict object&apos; has no attribute &apos;heka&apos;错误
+</code></pre><p>具体错误信息如下：</p>
+<pre><code>INFO:kolla.common.utils:Image squash is disabled
+INFO:kolla.common.utils:Found the docker image folder at /usr/local/share/kolla/docker
+Traceback (most recent call last):
+&lt;!--more--&gt;
+  File &quot;/usr/local/bin/kolla-build&quot;, line 10, in &lt;module&gt;
+    sys.exit(main())
+  File &quot;/usr/local/lib/python2.7/dist-packages/kolla/cmd/build.py&quot;, line 30, in main
+    statuses = build.run_build()
+  File &quot;/usr/local/lib/python2.7/dist-packages/kolla/image/build.py&quot;, line 1260, in run_build
+    kolla.create_dockerfiles()
+  File &quot;/usr/local/lib/python2.7/dist-packages/kolla/image/build.py&quot;, line 899, in create_dockerfiles
+    content = template.render(values, env=os.environ)
+  File &quot;/usr/local/lib/python2.7/dist-packages/jinja2/environment.py&quot;, line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File &quot;/usr/local/lib/python2.7/dist-packages/jinja2/environment.py&quot;, line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File &quot;/tmp/kolla-2018-07-11_05-18-23_39cbVG/docker/heka/Dockerfile.j2&quot;, line 8, in top-level template code
+  File &quot;/usr/local/lib/python2.7/dist-packages/jinja2/runtime.py&quot;, line 553, in _invoke
+    rv = self._func(*arguments)
+  File &quot;/tmp/kolla-2018-07-11_05-18-23_39cbVG/docker/macros.j2&quot;, line 47, in template
+  File &quot;/usr/local/lib/python2.7/dist-packages/jinja2/environment.py&quot;, line 430, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: &apos;dict object&apos; has no attribute &apos;heka&apos;
+</code></pre><p>问题原因：</p>
+<pre><code>kolla版本较低，不支持heka目录，pip list | grep kolla
+</code></pre><p>解决办法：</p>
+<pre><code>http://eavesdrop.openstack.org/irclogs/%23openstack-kolla/%23openstack-kolla.2017-09-30.log.html
+$ cd /usr/local/share/kolla/docker
+$ rm -rf heka
+</code></pre>
+          
         
       
     </div>
