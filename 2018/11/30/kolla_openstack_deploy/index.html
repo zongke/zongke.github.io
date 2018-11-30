@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="All-in-One部署系统要求：2张网卡8G内存40G磁盘 系统环境准备：  关闭防火墙：ufw disable 增加DNS解析：vim /etc/resolve.conf   nameserver 114.114.114.114 设置hostname：vim /etc/hostname   kollaVim /etc/hosts  127.0.0.1 kolla 更新apt源Vim /etc/">
+  <meta name="description" content="All-in-One部署系统要求：2张网卡8G内存40G磁盘 系统环境准备：  关闭防火墙：ufw disable 增加DNS解析：vim /etc/resolve.conf   nameserver 114.114.114.114 设置hostname：vim /etc/hostname   kollaVim /etc/hosts  127.0.0.1 kolla">
 <meta name="keywords" content="部署">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kolla部署openstack集群">
 <meta property="og:url" content="http://zkaa.club/2018/11/30/kolla_openstack_deploy/index.html">
 <meta property="og:site_name" content="安安">
-<meta property="og:description" content="All-in-One部署系统要求：2张网卡8G内存40G磁盘 系统环境准备：  关闭防火墙：ufw disable 增加DNS解析：vim /etc/resolve.conf   nameserver 114.114.114.114 设置hostname：vim /etc/hostname   kollaVim /etc/hosts  127.0.0.1 kolla 更新apt源Vim /etc/">
+<meta property="og:description" content="All-in-One部署系统要求：2张网卡8G内存40G磁盘 系统环境准备：  关闭防火墙：ufw disable 增加DNS解析：vim /etc/resolve.conf   nameserver 114.114.114.114 设置hostname：vim /etc/hostname   kollaVim /etc/hosts  127.0.0.1 kolla">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-30T08:50:25.546Z">
+<meta property="og:updated_time" content="2018-11-30T08:53:01.807Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kolla部署openstack集群">
-<meta name="twitter:description" content="All-in-One部署系统要求：2张网卡8G内存40G磁盘 系统环境准备：  关闭防火墙：ufw disable 增加DNS解析：vim /etc/resolve.conf   nameserver 114.114.114.114 设置hostname：vim /etc/hostname   kollaVim /etc/hosts  127.0.0.1 kolla 更新apt源Vim /etc/">
+<meta name="twitter:description" content="All-in-One部署系统要求：2张网卡8G内存40G磁盘 系统环境准备：  关闭防火墙：ufw disable 增加DNS解析：vim /etc/resolve.conf   nameserver 114.114.114.114 设置hostname：vim /etc/hostname   kollaVim /etc/hosts  127.0.0.1 kolla">
 
 
 
@@ -359,7 +359,7 @@
                 
               
 
-              <time title="创建时间：2018-11-30 08:35:24 / 修改时间：08:50:25" itemprop="dateCreated datePublished" datetime="2018-11-30T08:35:24+00:00">2018-11-30</time>
+              <time title="创建时间：2018-11-30 08:35:24 / 修改时间：08:53:01" itemprop="dateCreated datePublished" datetime="2018-11-30T08:35:24+00:00">2018-11-30</time>
             
 
             
@@ -437,7 +437,7 @@
 <ol>
 <li>关闭防火墙：ufw disable</li>
 <li>增加DNS解析：vim /etc/resolve.conf   nameserver 114.114.114.114</li>
-<li>设置hostname：vim /etc/hostname   kolla<br>Vim /etc/hosts  127.0.0.1 kolla</li>
+<li>设置hostname：vim /etc/hostname   kolla<br>Vim /etc/hosts  127.0.0.1 kolla<a id="more"></a></li>
 <li>更新apt源<br>Vim /etc/apt/source.list<br>deb <a href="https://apt.dockerproject.org/repo" target="_blank" rel="noopener">https://apt.dockerproject.org/repo</a> ubuntu-xenial main<br>deb-src <a href="http://archive.Ubuntu.com/ubuntu" target="_blank" rel="noopener">http://archive.Ubuntu.com/ubuntu</a> xenial main restricted<br>deb <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial main restricted<br>deb-src <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial main restricted multiverse universe<br>deb <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial-updates main restricted<br>deb-src <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial-updates main restricted multiverse universe<br>deb <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial universe<br>deb <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial-updates universe<br>deb <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial multiverse<br>deb <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial-updates multiverse<br>deb <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial-backports main restricted universe multiverse<br>deb-src <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial-backports main restricted universe multiverse<br>deb <a href="http://archive.canonical.com/ubuntu" target="_blank" rel="noopener">http://archive.canonical.com/ubuntu</a> xenial partner<br>deb-src <a href="http://archive.canonical.com/ubuntu" target="_blank" rel="noopener">http://archive.canonical.com/ubuntu</a> xenial partner<br>deb <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial-security main restricted<br>deb-src <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial-security main restricted multiverse universe<br>deb <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial-security universe<br>deb <a href="http://mirrors.aliyun.com/ubuntu/" target="_blank" rel="noopener">http://mirrors.aliyun.com/ubuntu/</a> xenial-security multiverse</li>
 <li>同步时间：apt-get install ntp<br>Apt-get install ntpdate<br>Systemctl stop ntpd<br>Ntpdata cn.ntp.org.cn</li>
 <li>修改网卡配置文件<br>Vim /etc/network</li>
